@@ -1,0 +1,36 @@
+curl -L -i -X PUT \
+-H 'Content-Type: application/json' \
+-H 'Content-Encoding:  utf-8' \
+-H 'Authorization: SharedAccessSignature sr=0ne0015ABF4%2Fregistrations%2Ftestdps01&sig=M64bM5QETwwzgs9YhtWAh8g%2FPmV%2Fb48%2B0hbUvw5bF1M%3D&se=1820908027&skn=registration' \
+-d '{"registrationId": "testdps01"}' \
+https://global.azure-devices-provisioning.net/0ne0015ABF4/registrations/testdps01/register?api-version=2019-03-31
+
+
+
+curl -L -i -X GET \
+http://localhost:7071/api/Provision?DCF=
+
+
+curl -L -i -X GET \
+https://dps-client.azurewebsites.net/api/Provision?DCF=ScopeId%3D0ne0015ABF4%3BDeviceId%3Ddpstest04%3BSharedAccessKey%3D5otQ1EdIGLwcT0leER7K7Ndk93bbpaOgM%2FokVwtu6gQ%3D%3BModelId%3Ddtmi%3Arigado%3AHoboMX1102A%3B1
+
+U2NvcGVJZD0wbmUwMDE1QUJGNDtEZXZpY2VJZD1kcHN0ZXN0MDQ7U2hhcmVkQWNjZXNzS2V5PTVvdFExRWRJR0x3Y1QwbGVFUjdLN05kazkzYmJwYU9nTS9va1Z3dHU2Z1E9O01vZGVsSWQ9ZHRtaTpyaWdhZG86SG9ib01YMTEwMkE7MQ==
+
+ScopeId=0ne0015ABF4;DeviceId=test04;MasterAccessKey=gq4DZfE52zN5IvPIW0AVorT+QKHJA4SZVYLVWeQqzdYxbciKSEWs8oe+H8cb61YVP3qqxDOsVsmNOUBrcv7g6A==;ModelId=dtmi:rigado:HoboMX1102A;1
+
+
+
+curl -L -i -X GET \
+https://dps-client.azurewebsites.net/api/Provision?DCF=U2NvcGVJZD0wbmUwMDE1QUJGNDtEZXZpY2VJZD1kcHN0ZXN0MDQ7U2hhcmVkQWNjZXNzS2V5PTVvdFExRWRJR0x3Y1QwbGVFUjdLN05kazkzYmJwYU9nTS9va1Z3dHU2Z1E9O01vZGVsSWQ9ZHRtaTpyaWdhZG86SG9ib01YMTEwMkE7MQ==
+
+
+U2NvcGVJZD0wbmUwMDE1QUJGNDtEZXZpY2VJZD10ZXN0MDQ7TWFzdGVyQWNjZXNzS2V5PWdxNERaZkU1MnpONUl2UElXMEFWb3JUK1FLSEpBNFNaVllMVldlUXF6ZFl4YmNpS1NFV3M4b2UrSDhjYjYxWVZQM3FxeERPc1ZzbU5PVUJyY3Y3ZzZBPT07TW9kZWxJZD1kdG1pOnJpZ2FkbzpIb2JvTVgxMTAyQTsx
+
+U2NvcGVJZD0wbmUwMDE1QUJGNDtEZXZpY2VJZD10ZXN0MDQ7TWFzdGVyQWNjZXNzS2V5PWdxNERaZkU1MnpONUl2UElXMEFWb3JUK1FLSEpBNFNaVllMVldlUXF6ZFl4YmNpS1NFV3M4b2UrSDhjYjYxWVZQM3FxeERPc1ZzbU5PVUJyY3Y3ZzZBPT07TW9kZWxJZD1kdG1pOnJpZ2FkbzpIb2JvTVgxMTAyQTsx
+
+
+U2NvcGVJZD0wbmUwMDE1QUJGNDtEZXZpY2VJZD1kcHN0ZXN0MDQ7U2hhcmVkQWNjZXNzS2V5PTVvdFExRWRJR0x3Y1QwbGVFUjdLN05kazkzYmJwYU9nTS9va1Z3dHU2Z1E9O01vZGVsSWQ9ZHRtaTpyaWdhZG86SG9ib01YMTEwMkE7MQ==
+
+
+
+ScopeId=0ne0015ABF4;DeviceId=dpstest04;SharedAccessKey=5otQ1EdIGLwcT0leER7K7Ndk93bbpaOgM/okVwtu6gQ=;ModelId=dtmi:rigado:HoboMX1102A;1
