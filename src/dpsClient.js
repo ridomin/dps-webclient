@@ -1,6 +1,6 @@
 import { generateSasToken } from './hmac'
 
-export const registerDevice = async (scopeId, deviceId, deviceKey, modelId) => {
+export async function registerDevice (scopeId, deviceId, deviceKey, modelId) {
   const endpoint = 'https://dps-client.azurewebsites.net/api/Provision'
   const qs = encodeURIComponent(`ScopeId=${scopeId};DeviceId=${deviceId};SharedAccessKey=${deviceKey};ModelId=${modelId}`)
   const url = `${endpoint}?DCF=${qs}`

@@ -6,11 +6,10 @@
 	export let deviceKey 
 	export let masterKey = 'gq4DZfE52zN5IvPIW0AVorT+QKHJA4SZVYLVWeQqzdYxbciKSEWs8oe+H8cb61YVP3qqxDOsVsmNOUBrcv7g6A=='
 	export let modelId = 'dtmi:com:example:Thermostat;1'
-
 	$: deviceKey = createHmac(masterKey, deviceId).then(d => deviceKey = d)
-
-	let dpsPromise
-
+	
+	export let dpsPromise
+	
 	function provision() {
 		dpsPromise = registerDevice(scopeId, deviceId, deviceKey, modelId)
 	}
@@ -50,7 +49,11 @@
 	{#await dpsPromise}
 		<p>.. provisioning device ..</p>
 	{:then dpsResult}
-		<a href={dpsResult}>{dpsResult}</a>
+		{#if dpsResult}
+			<a href={dpsResult}>{dpsResult}</a>
+		{/if}
+	{:catch error}
+		<p style="color: red">{error.message}</p>
 	{/await}
 
 </main>
