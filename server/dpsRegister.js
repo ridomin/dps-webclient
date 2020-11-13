@@ -5,7 +5,7 @@ const scopeId = '0ne001617A2'
 const deviceId = 'dev01' // 'device' + Date.now()
 const masterKey = 'y3bcyTw0qTZ14jcxKNz6tv1Ntp8PdN+SzCa8Nyuaek0aif6iZLldm3kHawb5DTp6BzBlqXPjM1+Hn7GO3UJ7EA=='
 let deviceKey = ''
-// const modelId = 'dtmi:com:example:Thermostat;1'
+const modelId = 'dtmi:com:example:Thermostat;1'
 
 const register = async () => {
   deviceKey = await createHmac(masterKey, deviceId)
@@ -23,7 +23,7 @@ const register = async () => {
         'Content-Encoding': 'utf-8',
         Authorization: token
       },
-      body: JSON.stringify({ registrationId: deviceId })
+      body: JSON.stringify({ registrationId: deviceId, payload: { modelId } })
     }
   )
   const response = await resp.json()

@@ -17,9 +17,8 @@ export/**
    */
 async function generateSasToken (resourceUri, signingKey, policyName, expiresInMins) {
   resourceUri = encodeURIComponent(resourceUri)
-  // let expires = (Date.now() / 1000) + expiresInMins * 60
-  // expires = Math.ceil(expires)
-  const expires = 1605244158
+  let expires = (Date.now() / 1000) + expiresInMins * 60
+  expires = Math.ceil(expires)
   const toSign = resourceUri + '\n' + expires
   const hmac = await createHmac(signingKey, toSign)
   console.log('hmac', hmac)
