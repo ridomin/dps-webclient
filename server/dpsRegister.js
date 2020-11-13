@@ -28,6 +28,22 @@ const register = async () => {
   )
   const response = await resp.json()
   console.log(response)
+  if (response && response.status && response.status === 'assigning') {
+    setTimeout(async () => {
+      const opid = response.operationId
+      const statusUrl = `${base}${path}/operations/${opid}?api-version=2019-03-31`
+      const resp = await fetch(statusUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Encoding': 'utf-8',
+          Authorization: token
+        }
+      })
+      const provResult = await resp.json()
+      console.log(provResult)
+    }, 2000)
+  }
 }
 
 register().catch(e => console.log(e))
