@@ -1,22 +1,19 @@
 import { generateSasToken } from './hmac'
 
 export async function registerDevice (scopeId, deviceId, deviceKey, modelId) {
-  const endpoint = 'https://dps-client.azurewebsites.net/api/Provision'
-  const qs = encodeURIComponent(`ScopeId=${scopeId};DeviceId=${deviceId};SharedAccessKey=${deviceKey};ModelId=${modelId}`)
-  const url = `${endpoint}?DCF=${qs}`
+  const endpoint = 'https://dps-proxy.azurewebsites.net/register'
+  const url = `${endpoint}?scopeId=${scopeId}&deviceId=${deviceId}&deviceKey=${encodeURIComponent(deviceKey)}&modelId=${modelId}`
   console.log(url)
-  const resp = await fetch(url,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Content-Encoding': 'utf-8'
-      }
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Encoding': 'utf-8'
     }
-  )
-  const response = await resp.text()
-  console.log(response)
-  return response
+  })
+  const resp = await response.json()
+  console.log(resp)
+  return resp
 }
 
 export const registerDeviceRest = async (scopeId, deviceId, deviceKey) => {

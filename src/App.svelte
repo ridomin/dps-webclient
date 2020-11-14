@@ -1,10 +1,10 @@
 <script>
 	import {createHmac} from './hmac'
 	import {registerDevice} from './dpsClient'
-	export let scopeId = '0ne0015ABF4'
-	export let deviceId = 'testdps01'
+	export let scopeId = '0ne001617A2'
+	export let deviceId = 'device' + Date.now()
 	export let deviceKey 
-	export let masterKey = 'gq4DZfE52zN5IvPIW0AVorT+QKHJA4SZVYLVWeQqzdYxbciKSEWs8oe+H8cb61YVP3qqxDOsVsmNOUBrcv7g6A=='
+	export let masterKey = 'y3bcyTw0qTZ14jcxKNz6tv1Ntp8PdN+SzCa8Nyuaek0aif6iZLldm3kHawb5DTp6BzBlqXPjM1+Hn7GO3UJ7EA=='
 	export let modelId = 'dtmi:com:example:Thermostat;1'
 	$: deviceKey = createHmac(masterKey, deviceId).then(d => deviceKey = d)
 	
@@ -50,7 +50,11 @@
 		<p>.. provisioning device ..</p>
 	{:then dpsResult}
 		{#if dpsResult}
-			<a href={dpsResult}>{dpsResult}</a>
+			<pre>{dpsResult.operationId}</pre>
+			<div>
+				status: {dpsResult.registrationState.status} to {dpsResult.registrationState.assignedHub}
+			</div>
+			<div><a target="_new" href="http://mqtt.rido.dev/?HostName={dpsResult.registrationState.assignedHub}&DeviceId={dpsResult.registrationState.deviceId}&SharedAccessKey={deviceKey}&ModelId={modelId}">Simulate {dpsResult.registrationState.deviceId} on {dpsResult.registrationState.assignedHub} </a></div>
 		{/if}
 	{:catch error}
 		<p style="color: red">{error.message}</p>
