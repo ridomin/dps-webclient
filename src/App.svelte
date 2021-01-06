@@ -1,10 +1,10 @@
 <script>
 	import {createHmac} from './hmac'
 	import {registerDevice} from './dpsClient'
-	export let scopeId = '0ne001617A2'
+	export let scopeId = '0ne001F5FDE'
 	export let deviceId = 'device' + Date.now()
 	export let deviceKey 
-	export let masterKey = 'y3bcyTw0qTZ14jcxKNz6tv1Ntp8PdN+SzCa8Nyuaek0aif6iZLldm3kHawb5DTp6BzBlqXPjM1+Hn7GO3UJ7EA=='
+	export let masterKey = 'YXv1cy8kSq6Q9fmWF59TXdt3H9duSHBomxL0YnpSCpguWlw7LzMydabQoWPT3uoZOoWe61AgOFTcEyFOMbVFjg=='
 	export let modelId = 'dtmi:com:example:Thermostat;1'
 	$: deviceKey = createHmac(masterKey, deviceId).then(d => deviceKey = d)
 	
